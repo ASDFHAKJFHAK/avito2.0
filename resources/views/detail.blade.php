@@ -14,6 +14,8 @@
 	<br>
 	<h1>{{ $post->content}}</h1>
 	<br>
+	<h1>{{ $post->img}}</h1>
+	<br>
 	<h1>{{ $post->price}}</h1>
 	<br>
 	<a href="{{ route('index') }}">На главную</a>

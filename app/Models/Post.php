@@ -8,7 +8,7 @@ class Post extends Model
 {
     // Это модель обеспечивает связь с бд и поля доступные для записи в бд
     // Теперь обращение к бд идет через название модели
-    protected $fillable = ['title', 'content', 'damage', 'user_id'];
+    protected $fillable = ['title', 'content', 'img', 'price', 'user_id'];
     public function user() {
         return $this->belongsTo(User::class);
         // создает связь с первичной таблицей НЕ ЗАБУДЬ ПОДКЛЮЧИТЬ ПУТЬ К ПЕРВИЧНОЙ МОДЕЛИ

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('content');
-            $table->text('url_img');
+            $table->binary('img');
             $table->float('price');
             // создание зависимого от другой таблицы поля где первое слово название таблицы а второе критерий связи последний метод для удаления записи при смерти ее родителя
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

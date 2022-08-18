@@ -18,7 +18,7 @@
         <tr>
             <td><h3>{{ $bb->title }}</h3></td>
             <td>{{ $bb->content }}</td>
-            
+            <td><img src="{{ $bb->img }}" height="100"></td>
             <td>{{ $bb->price }}</td>
             <td>
                 <a href="{{ route('post.edit', ['post' => $bb->id]) }}">Изменить</a>

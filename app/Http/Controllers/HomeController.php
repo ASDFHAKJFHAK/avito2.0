@@ -9,7 +9,8 @@ class HomeController extends Controller
     private const POST_VALIDATOR = [
         'title' => 'required|max:50', //Задает ограничение для написанных столбцов в массиве
         'content' => 'required',
-        'price' => 'required|numeric'
+        'price' => 'required|numeric',
+        'img' => 'required'
     ];
      private const POST_ERROR_MESSAGES = [
         'price.required' => 'Раздавать товары бесплатно нельзя', //Вывод ошибки при вводе неверных данных
@@ -49,7 +50,8 @@ class HomeController extends Controller
         Auth::user()->post()->create(
             ['title' =>  $validated['title'],
             'content' => $validated['content'],
-            'price' => $validated['price']]);
+            'price' => $validated['price'],
+            'img' => $validated['img']]);
         return redirect()->route('home');
     }
 
@@ -61,7 +63,9 @@ class HomeController extends Controller
         $validated = $request->validate(self::POST_VALIDATOR, self::POST_ERROR_MESSAGES);
         $post->fill(['title' => $validated['title'],     
         'content' => $validated['content'], 
-        'price' => $validated['price']]);
+        'price' => $validated['price'],
+        'img' => $validated['img']]
+    );
         $post->save();
         return redirect()->route('home');
     }

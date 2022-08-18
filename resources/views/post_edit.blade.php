@@ -24,7 +24,16 @@
      </div>
      <div class="form-group">
          <label for="txtPrice">Цена</label>
-         <input name="price" id="txtPrice" class="form-control @error('damage') is-invalid @enderror" value="{{ old('content', $post->price) }}">
+         <input type="img" name="image" id="txtImg" class="form-control @error('damage') is-invalid @enderror" value="{{ old('img', $post->img) }}">
+          @error('img')
+                <span class="invalid-feedback">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+     </div>
+     <div class="form-group">
+         <label for="txtPrice">Цена</label>
+         <input name="price" id="txtPrice" class="form-control @error('damage') is-invalid @enderror" value="{{ old('price', $post->price) }}">
           @error('price')
                 <span class="invalid-feedback">
                     <strong>{{ $message }}</strong>

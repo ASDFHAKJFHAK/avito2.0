@@ -18,7 +18,8 @@
         <tr>
             <td><h3>{{ $bb->title }}</h3></td>
             <td>{{ $bb->content }}</td>
-            <td>{{ $bb->damage }}</td>
+            
+            <td>{{ $bb->price }}</td>
             <td>
                 <a href="{{ route('post.edit', ['post' => $bb->id]) }}">Изменить</a>
             </td>

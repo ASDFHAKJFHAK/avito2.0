@@ -14,7 +14,7 @@
 	<br>
 	<h1>{{ $post->content}}</h1>
 	<br>
-	<h1>{{ $post->damage}}</h1>
+	<h1>{{ $post->price}}</h1>
 	<br>
 	<a href="{{ route('index') }}">На главную</a>
 	@endsection('main')

@@ -24,8 +24,8 @@
      </div>
      <div class="form-group">
          <label for="txtPrice">Цена</label>
-         <input name="damage" id="txtPrice" class="form-control @error('damage') is-invalid @enderror" value="{{ old('content', $post->damage) }}">
-          @error('damage')
+         <input name="price" id="txtPrice" class="form-control @error('damage') is-invalid @enderror" value="{{ old('content', $post->price) }}">
+          @error('price')
                 <span class="invalid-feedback">
                     <strong>{{ $message }}</strong>
                 </span>

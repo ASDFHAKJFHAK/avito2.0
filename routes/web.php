@@ -12,6 +12,7 @@ Route::get('/asd', [GameLobyController::class, 'index'])->name('index');
 
 // наследует маршируты из атач библиотеки
 Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home/add', [HomeController::class, 'showAddPostForm'])->name('post.add');

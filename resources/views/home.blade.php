@@ -2,13 +2,13 @@
 @section('title', 'Вход')
 @section('main')
 <h2>Добро пожаловать, {{ Auth::user()->name }}!</h2>
-<p class="text-right"><a href="{{ route('post.add') }}">Добавить объявление</a></p>
+
 @if (count($posts) > 0)
 <table class="table table-striped">
     <thead>
         <tr>
             <th>Товар</th>
-            Глава 2. Доска объявлений 2.0: разграничение доступа, добавление, правка и удаление объявлений 65
+            <th>Описание</th>
             <th>Цена, руб.</th>
             <th colspan="2">&nbsp;</th>
         </tr>
@@ -18,24 +18,7 @@
         <tr>
             <td><h3>{{ $bb->title }}</h3></td>
             <td>{{ $bb->content }}</td>
-            <img src="{{ asset( '/storage/' . $bb->img0)}}">
-            <br>
-            @if (null !== ($bb->img1))
-            <img src="{{ asset( '/storage/' . $bb->img1)}}">
-            <br>
-            @endif
-            @if (null !== ($bb->img2))
-            <img src="{{ asset( '/storage/' . $bb->img2)}}">
-            <br>
-            @endif
-            @if (null !== ($bb->img3))
-            <img src="{{ asset( '/storage/' . $bb->img3)}}">
-            <br>
-            @endif
-            @if (null !== ($bb->img4))
-            <img src="{{ asset( '/storage/' . $bb->img4)}}">
-            <br>
-            @endif
+
             <td>{{ $bb->price }}</td>
             <td>
                 <a href="{{ route('post.edit', ['post' => $bb->id]) }}">Изменить</a>
@@ -48,5 +31,5 @@
     </tbody>
 </table> 
 @endif 
-
+<p class="text-right"><a href="{{ route('post.add') }}">Добавить объявление</a></p>
 @endsection

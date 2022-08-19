@@ -1,0 +1,29 @@
+.card{
+	margin: 0 !important;
+}
+.col-lg-6{
+	padding: 0 !important;
+}
+.card-text{
+	max-height: 166px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	w
+}
+.folder{
+	display: flex;
+	justify-content: center;
+	border: solid black 3px;
+}
+
+.simple-linear{
+	background: linear-gradient(blue, wheat);
+}
+
+@media(max-width: 768px){
+	.simple-linear{
+		background: linear-gradient(white, white);
+	}
+}
+
+

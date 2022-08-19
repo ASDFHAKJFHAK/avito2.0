@@ -14,8 +14,24 @@
 	<br>
 	<h1>{{ $post->content}}</h1>
 	<br>
-	<h1>{{ $post->img}}</h1>
+	<img src="{{ asset( '/storage/' . $post->img0)}}">
 	<br>
+    @if (null !== ($post->img1))
+    <img src="{{ asset( '/storage/' . $bb->img1)}}">
+    <br>
+    @endif
+    @if (null !== ($post->img2))
+    <img src="{{ asset( '/storage/' . $bb->img2)}}">
+    <br>
+    @endif
+    @if (null !== ($post->img3))
+    <img src="{{ asset( '/storage/' . $bb->img3)}}">
+    <br>
+    @endif
+    @if (null !== ($post->img4))
+    <img src="{{ asset( '/storage/' . $bb->img4)}}">
+    <br>
+    @endif	
 	<h1>{{ $post->price}}</h1>
 	<br>
 	<a href="{{ route('index') }}">На главную</a>

@@ -18,7 +18,24 @@
         <tr>
             <td><h3>{{ $bb->title }}</h3></td>
             <td>{{ $bb->content }}</td>
-            <td><img src="{{ $bb->img }}" height="100"></td>
+            <img src="{{ asset( '/storage/' . $bb->img0)}}">
+            <br>
+            @if (null !== ($bb->img1))
+            <img src="{{ asset( '/storage/' . $bb->img1)}}">
+            <br>
+            @endif
+            @if (null !== ($bb->img2))
+            <img src="{{ asset( '/storage/' . $bb->img2)}}">
+            <br>
+            @endif
+            @if (null !== ($bb->img3))
+            <img src="{{ asset( '/storage/' . $bb->img3)}}">
+            <br>
+            @endif
+            @if (null !== ($bb->img4))
+            <img src="{{ asset( '/storage/' . $bb->img4)}}">
+            <br>
+            @endif
             <td>{{ $bb->price }}</td>
             <td>
                 <a href="{{ route('post.edit', ['post' => $bb->id]) }}">Изменить</a>

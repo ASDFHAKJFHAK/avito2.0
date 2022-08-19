@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Storage;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,7 @@ class HomeController extends Controller
         'title' => 'required|max:50', //Задает ограничение для написанных столбцов в массиве
         'content' => 'required',
         'price' => 'required|numeric',
-        'img' => 'required'
+        'img0' => 'required'
     ];
      private const POST_ERROR_MESSAGES = [
         'price.required' => 'Раздавать товары бесплатно нельзя', //Вывод ошибки при вводе неверных данных
@@ -47,11 +48,42 @@ class HomeController extends Controller
 
     public function storePost(Request $request) {
         $validated = $request->validate(self::POST_VALIDATOR, self::POST_ERROR_MESSAGES);//Создается переменная которая задает валидцаию и применяет ее к столбцам validate() объекта запроса, в котором и содержатся подлежащие валидации данные 
+        $img1 = null;
+        $img2 = null;
+        $img3 = null;
+        $img4 = null;
+
+        if(null !== ($request->file('img1'))){
+            $img1 = $request->file('img1')->store('uploads', 'public');
+        }
+
+        if(null !== ($request->file('img2'))){
+            $img2 = $request->file('img2')->store('uploads', 'public');
+        }
+
+        if(null !== ($request->file('img3'))){
+            $img3 = $request->file('img3')->store('uploads', 'public');
+        }
+
+        if(null !== ($request->file('img4'))){
+            $img4 = $request->file('img4')->store('uploads', 'public');
+        }
+
+
+
+
+
         Auth::user()->post()->create(
             ['title' =>  $validated['title'],
             'content' => $validated['content'],
             'price' => $validated['price'],
-            'img' => $validated['img']]);
+            'img0' => $request->file('img0')->store('uploads', 'public'),
+            'img1' => $img1,
+            'img2' => $img2,
+            'img3' => $img3,
+            'img4' => $img4
+
+        ]);
         return redirect()->route('home');
     }
 
@@ -61,11 +93,57 @@ class HomeController extends Controller
 
     public function updatePost(Request $request, Post $post) {
         $validated = $request->validate(self::POST_VALIDATOR, self::POST_ERROR_MESSAGES);
+
+        unlink('../storage/app/public/' . $post->img0);
+
+        if(null !== $post->img1){
+            unlink('../storage/app/public/' . $post->img1);
+        }
+
+        if(null !== $post->img2){
+            unlink('../storage/app/public/' . $post->img2);
+        }
+
+        if(null !== $post->img3){
+            unlink('../storage/app/public/' . $post->img3);
+        }
+
+        if(null !== $post->img4){
+            unlink('../storage/app/public/' . $post->img4); 
+        }
+
+
+        $img1 = null;
+        $img2 = null;
+        $img3 = null;
+        $img4 = null;
+
+        if(null !== ($request->file('img1'))){
+            $img1 = $request->file('img1')->store('uploads', 'public');
+        }
+
+        if(null !== ($request->file('img2'))){
+            $img2 = $request->file('img2')->store('uploads', 'public');
+        }
+
+        if(null !== ($request->file('img3'))){
+            $img3 = $request->file('img3')->store('uploads', 'public');
+        }
+
+        if(null !== ($request->file('img4'))){
+             $img4 = $request->file('img4')->store('uploads', 'public');
+        }
+
+       
         $post->fill(['title' => $validated['title'],     
         'content' => $validated['content'], 
         'price' => $validated['price'],
-        'img' => $validated['img']]
-    );
+        'img0' => $request->file('img0')->store('uploads', 'public'),
+        'img1' => $img1,
+        'img2' => $img2,
+        'img3' => $img3,
+        'img4' => $img4
+    ]);
         $post->save();
         return redirect()->route('home');
     }
@@ -75,6 +153,25 @@ class HomeController extends Controller
     }
 
     public function destroyPost(Post $post) {
+
+        unlink('../storage/app/public/' . $post->img0);
+
+        if(null !== $post->img1){
+            unlink('../storage/app/public/' . $post->img1);
+        }
+
+        if(null !== $post->img2){
+            unlink('../storage/app/public/' . $post->img2);
+        }
+
+        if(null !== $post->img3){
+            unlink('../storage/app/public/' . $post->img3);
+        }
+
+        if(null !== $post->img4){
+            unlink('../storage/app/public/' . $post->img4); 
+        }
+  
         $post->delete();
         return redirect()->route('home');
     }

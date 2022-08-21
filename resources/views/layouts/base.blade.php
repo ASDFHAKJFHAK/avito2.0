@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
 
 	<!-- Это базовый слой вэб страниц сайта от него наследуються остольные СТАТИЧНЫЕ БЛОКИ ПИШУТЬСЯ ЗДЕСЬ ТАКИЕ КАК ФУТЕР ОСТАЛЬНЫЕ ПОДЕЛЮЧАЮТЬСЯ ЧЕРЕЗ @yield('имя') эти блоки беруться из наследников ВСЕ СТИЛИ ТОЖЕ ПОДКЛЮЧАЮТЬСЯ ЗДЕСЬ -->
@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
 	<title>@yield('title') :: Обявления</title>
 	<!-- ========================header============ -->
 </head>
@@ -18,7 +18,7 @@
 			<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
 				<div class="container-fluid">
 					<div>
-						<img src="./images/logo.png" alt="" width="80" height="24" class="d-inline-block align-text-top">
+						<img src="{{ asset('/images/logo.png')}}" alt="" width="80" height="24" class="d-inline-block align-text-top">
 						<a class="navbar-brand" href="{{ route('index') }}">Главная</a>
 						@auth
 						<a id="navba" class="navbar-brand" aria-current="page" href="{{ route('home') }}">Мои объявления</a>

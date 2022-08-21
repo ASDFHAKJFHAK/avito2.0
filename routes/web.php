@@ -8,7 +8,7 @@ use App\Http\Controllers\HomeController;
 // Route::get('/{posts(это передасться в аргумент функции контролера)}', [название контролера::class, 'метод контролера']->name('название марширутизатора для ссылок'));
 // если у марширута есть имя то ссылкам можно писать его а не полный URN
 
-Route::get('/asd', [GameLobyController::class, 'index'])->name('index');
+Route::get('/', [GameLobyController::class, 'index'])->name('index');
 
 // наследует маршируты из атач библиотеки
 Auth::routes();

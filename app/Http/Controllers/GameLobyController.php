@@ -22,7 +22,7 @@ class GameLobyController extends Controller
 // latest сортирует в хронологическом порядке
 
     public function index() {
-        return view("main" , ['posts' => Post::orderBy('title')->get()]);
+        return view("main" , ['posts' => Post::orderBy('title')->paginate(2)]);
     }
 
     // Post тип данных (здесь это одна запись из бд)

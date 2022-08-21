@@ -8,7 +8,6 @@
 	max-height: 166px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	w
 }
 .folder{
 	display: flex;
@@ -26,4 +25,32 @@
 	}
 }
 
+.items-slider{
+	width: inherit;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+}
+.carousel-control-prev{
+	position: relative;
+}
 
+.carousel-control-next{
+	position: relative;
+}
+
+.card{
+    margin: 8px 8px !important;
+}
+
+.form-control{
+	width: auto;
+}
+
+.add-txt{
+	color: black;
+	text-decoration: none !important;
+}
+tbody, td, tfoot, th, thead, tr{
+	border-style: none;
+}

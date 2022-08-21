@@ -39,6 +39,7 @@ class HomeController extends Controller
     public function index()
     {   
         // показать страницу хоум с данными из бд user модель которой имеет прямую связь с бд post и получает ее посты
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! до пагинатора было гет()
         return view('home', ['posts' => Auth::user()->post()->latest()->get()]);
     }
 

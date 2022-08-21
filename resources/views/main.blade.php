@@ -12,47 +12,50 @@
 		<div class="row">
 			@foreach ($posts as $item)
 			<div class="col-lg-6 col-xxl-4">
-				<div class="card mb-4 me-4" style="max-width: 540px;">
+				<div class="card justify-content-center" style="max-width: 540px; min-height: 43vh;">
 					<div class="row g-0">
-						<div class="col-sm-6 col-12 col-xxl-12 d-flex align-items-center">
+						<div class="col-sm-6 col-12 col-xxl-12 d-flex align-items-center justify-content-center">
+							<div class="items-slider">
+							<button class="carousel-control-prev justify-content-start"  type="button" data-bs-target="#carouselExampleControls{{$item->id}}" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: black;"></span>
+									<span class="visually-hidden">Previous</span>
+								</button>
+								<button class="carousel-control-next justify-content-end" type="button" data-bs-target="#carouselExampleControls{{$item->id}}" data-bs-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"style="background-color: black;"></span>
+									<span class="visually-hidden" >Next</span>
+								</button>
+								</div>
 							<div id="carouselExampleControls{{$item->id}}" class="carousel slide " data-bs-ride="carousel">
 								<div class="carousel-inner">
-									<div class="carousel-item active">
-										<img src="{{ asset( '/storage/' . $item->img0)}}" class="d-block w-100" alt="Картинка">
+									<div class="carousel-item active" style="min-height: 30vh; max-height: 30vh;">
+										<img src="{{ asset( '/storage/' . $item->img0)}}" class="d-block" style="max-height:30vh" alt="Картинка">
 									</div>
 
 									@if (null !== ($item->img1))
-									<div class="carousel-item">
-										<img src="{{ asset( '/storage/' . $item->img1)}}" class="d-block w-100" alt="Картинка">
+									<div class="carousel-item" style="min-height: 30vh;  max-height: 30vh;">
+										<img src="{{ asset( '/storage/' . $item->img1)}}" class="d-block" style="max-height:30vh" alt="Картинка">
 									</div>
 									@endif
 
 									@if (null !== ($item->img2))
-									<div class="carousel-item">
-										<img src="{{ asset( '/storage/' . $item->img2)}}" class="d-block w-100" alt="Картинка">
+									<div class="carousel-item" style="min-height: 30vh;  max-height: 30vh;">
+										<img src="{{ asset( '/storage/' . $item->img2)}}" class="d-block" style="max-height:30vh" alt="Картинка">
 									</div>
 									@endif
 
 									@if (null !== ($item->img3))
-									<div class="carousel-item">
-										<img src="{{ asset( '/storage/' . $item->img3)}}" class="d-block w-100" alt="Картинка">
+									<div class="carousel-item" style="min-height: 30vh;  max-height: 30vh;">
+										<img src="{{ asset( '/storage/' . $item->img3)}}" class="d-block" style="max-height:30vh" alt="Картинка">
 									</div>
 									@endif
 
 									@if (null !== ($item->img4))
-									<div class="carousel-item">
-										<img src="{{ asset( '/storage/' . $item->img4)}}" class="d-block w-100" alt="Картинка">
+									<div class="carousel-item" style="min-height: 30vh;  max-height: 30vh;">
+										<img src="{{ asset( '/storage/' . $item->img4)}}" class="d-block" style="max-height:30vh" alt="Картинка">
 									</div>
 									@endif
 								</div>
-								<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls{{$item->id}}" data-bs-slide="prev">
-									<span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: black;"></span>
-									<span class="visually-hidden">Previous</span>
-								</button>
-								<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls{{$item->id}}" data-bs-slide="next">
-									<span class="carousel-control-next-icon" aria-hidden="true"style="background-color: black;"></span>
-									<span class="visually-hidden" >Next</span>
-								</button>
+								
 							</div>
 						</div>
 						<div class="col-sm-6 col-12 col-xxl-12">
@@ -69,7 +72,10 @@
 					</div>
 				</div>
 			</div>
-			@endforeach
+			@endforeach	
+		<div class="mt-5">
+        	{{$posts->links()}}
+    	</div>
 		</div>
 	</div>
 </section>

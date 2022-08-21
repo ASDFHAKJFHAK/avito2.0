@@ -23,22 +23,29 @@
     </span>
     @enderror
 </div>
-@php $score = 0; @endphp
-@while($score < 5)
+
 <div class="form-group">
-   <label for="txtImg" class=" mt-3 mb-1">Изображение</label>
-   <input type="file" name="img{{ $score }}" id="txtImg" class="form-control @error('title') is-invalid @enderror" value="{{ old('img $score') }}">
-   @error('img')
+   <label for="txtImg" class=" mt-3 mb-1">Изображение (1 из 5)</label>
+   <input type="file" name="img0" id="txtImg" class="form-control @error('img0') is-invalid @enderror" value="{{ old('img0') }}">
+   @error('img0')
    <span class="invalid-feedback">
     <strong>{{ $message }}</strong>
 </span>
 @enderror
 </div>
+
+@php $score = 1; $num =1; @endphp
+@while($score < 5)
+@php $num++; @endphp
+<div class="form-group">
+   <label for="txtImg" class=" mt-3 mb-1">Изображение ({{$num}} из 5)</label>
+   <input type="file" name="img{{ $score }}" id="txtImg" class="form-control " value="{{ old('img $score') }}">
+</div>
 @php $score++ @endphp
 @endwhile
 <div class="form-group">
    <label for="txtPrice" class=" mt-3 mb-1">Цена</label>
-   <input name="price" id="txtPrice" class="form-control @error('damage') is-invalid @enderror" value="{{ old('price') }}">
+   <input name="price" id="txtPrice" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
    @error('price')
    <span class="invalid-feedback">
     <strong>{{ $message }}</strong>

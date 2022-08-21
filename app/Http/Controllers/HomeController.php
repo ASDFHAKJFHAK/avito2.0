@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     private const POST_VALIDATOR = [
-        'title' => 'required|max:50', //Задает ограничение для написанных столбцов в массиве
-        'content' => 'required',
+        'title' => 'required|max:40', //Задает ограничение для написанных столбцов в массиве
+        'content' => 'required|max:100',
         'price' => 'required|numeric',
         'img0' => 'required'
+    ];
+    private const POST_VALIDATOR_Of_IMG = [
+        'title' => 'required|max:40', //Задает ограничение для написанных столбцов в массиве
+        'content' => 'required|max:100',
+        'price' => 'required|numeric'
     ];
      private const POST_ERROR_MESSAGES = [
         'price.required' => 'Раздавать товары бесплатно нельзя', //Вывод ошибки при вводе неверных данных
@@ -93,26 +98,27 @@ class HomeController extends Controller
     }
 
     public function updatePost(Request $request, Post $post) {
-        $validated = $request->validate(self::POST_VALIDATOR, self::POST_ERROR_MESSAGES);
+        $validated = $request->validate(self::POST_VALIDATOR_Of_IMG, self::POST_ERROR_MESSAGES);
 
-        unlink('../storage/app/public/' . $post->img0);
 
-        if(null !== $post->img1){
-            unlink('../storage/app/public/' . $post->img1);
+        $img0 = $post->img0;
+
+        if($request->cek0 == "1"){
+            unlink('../storage/app/public/' . $post->img0);
+            $img0 = $request->file('img0')->store('uploads', 'public');
         }
-
-        if(null !== $post->img2){
+        if($request->cek1 == "1"){
+            unlink('../storage/app/public/' . $post->img1);
+        }        
+        if($request->cek2 == "1"){
             unlink('../storage/app/public/' . $post->img2);
         }
-
-        if(null !== $post->img3){
+        if($request->cek3 == "1"){
             unlink('../storage/app/public/' . $post->img3);
         }
-
-        if(null !== $post->img4){
-            unlink('../storage/app/public/' . $post->img4); 
+        if($request->cek4 == "1"){
+            unlink('../storage/app/public/' . $post->img4);
         }
-
 
         $img1 = null;
         $img2 = null;
@@ -139,7 +145,7 @@ class HomeController extends Controller
         $post->fill(['title' => $validated['title'],     
         'content' => $validated['content'], 
         'price' => $validated['price'],
-        'img0' => $request->file('img0')->store('uploads', 'public'),
+        'img0' => $img0,
         'img1' => $img1,
         'img2' => $img2,
         'img3' => $img3,

@@ -20,7 +20,7 @@ Route::post('/home', [HomeController::class, 'storePost'])->name('post.store');
 
 //                         middleware метод конструктора он же посредник для политики. сан запускает указаную проверку доступа в политике
 Route::get('/home/{post}/edit', [HomeController::class, 'showEditPostForm'])->name('post.edit')->middleware('can:update,post');
-Route::patch('/home/{post}', [HomeController::class, 'updatePost'])->name('post.update')->middleware('can:update,post');
+Route::post('/home/{post}', [HomeController::class, 'updatePost'])->name('post.update')->middleware('can:update,post');
 Route::get('/home/{post}/delete',[HomeController::class, 'showDeletePostForm'])->name('post.delete')->middleware('can:destroy,post');
 Route::delete('/home/{post}', [HomeController::class, 'destroyPost'])->name('post.destroy')->middleware('can:destroy,post');
 

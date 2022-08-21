@@ -28,30 +28,30 @@
 							<div id="carouselExampleControls{{$item->id}}" class="carousel slide " data-bs-ride="carousel">
 								<div class="carousel-inner">
 									<div class="carousel-item active" style="min-height: 30vh; max-height: 30vh;">
-										<img src="{{ asset( '/storage/' . $item->img0)}}" class="d-block" style="max-height:30vh" alt="Картинка">
+										<img src="{{ asset( '/storage/' . $item->img0)}}" class="d-block" style="max-height:30vh; width: inherit;" alt="Картинка">
 									</div>
 
 									@if (null !== ($item->img1))
 									<div class="carousel-item" style="min-height: 30vh;  max-height: 30vh;">
-										<img src="{{ asset( '/storage/' . $item->img1)}}" class="d-block" style="max-height:30vh" alt="Картинка">
+										<img src="{{ asset( '/storage/' . $item->img1)}}" class="d-block" style="max-height:30vh; width: inherit;" alt="Картинка">
 									</div>
 									@endif
 
 									@if (null !== ($item->img2))
 									<div class="carousel-item" style="min-height: 30vh;  max-height: 30vh;">
-										<img src="{{ asset( '/storage/' . $item->img2)}}" class="d-block" style="max-height:30vh" alt="Картинка">
+										<img src="{{ asset( '/storage/' . $item->img2)}}" class="d-block" style="max-height:30vh; width: inherit;" alt="Картинка">
 									</div>
 									@endif
 
 									@if (null !== ($item->img3))
 									<div class="carousel-item" style="min-height: 30vh;  max-height: 30vh;">
-										<img src="{{ asset( '/storage/' . $item->img3)}}" class="d-block" style="max-height:30vh" alt="Картинка">
+										<img src="{{ asset( '/storage/' . $item->img3)}}" class="d-block" style="max-height:30vh; width: inherit;" alt="Картинка">
 									</div>
 									@endif
 
 									@if (null !== ($item->img4))
 									<div class="carousel-item" style="min-height: 30vh;  max-height: 30vh;">
-										<img src="{{ asset( '/storage/' . $item->img4)}}" class="d-block" style="max-height:30vh" alt="Картинка">
+										<img src="{{ asset( '/storage/' . $item->img4)}}" class="d-block" style="max-height:30vh; width: inherit;" alt="Картинка">
 									</div>
 									@endif
 								</div>

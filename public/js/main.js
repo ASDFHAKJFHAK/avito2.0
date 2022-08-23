@@ -15,7 +15,6 @@ $(function(){
 	if($('#img4').length == 1){
 		$('#txtImg4').css({'display' : 'none'});
 	}
-	console.log($('#1'));
 });
 // кнопка удаления
 $(function(){

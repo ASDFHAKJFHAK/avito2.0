@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     private const POST_VALIDATOR = [
-        'title' => 'required|max:40', //Задает ограничение для написанных столбцов в массиве
-        'content' => 'required|max:100',
+        'title' => 'required|max:60', //Задает ограничение для написанных столбцов в массиве
+        'content' => 'required|max:250',
         'price' => 'required|numeric',
         'img0' => 'required'
     ];
@@ -78,11 +78,11 @@ class HomeController extends Controller
 
 
 
-
         Auth::user()->post()->create(
             ['title' =>  $validated['title'],
             'content' => $validated['content'],
             'price' => $validated['price'],
+            'categori_id' => $request->categori_id,
             'img0' => $request->file('img0')->store('uploads', 'public'),
             'img1' => $img1,
             'img2' => $img2,
@@ -145,6 +145,7 @@ class HomeController extends Controller
         $post->fill(['title' => $validated['title'],     
         'content' => $validated['content'], 
         'price' => $validated['price'],
+        'categori_id' => $request->categori_id,
         'img0' => $img0,
         'img1' => $img1,
         'img2' => $img2,

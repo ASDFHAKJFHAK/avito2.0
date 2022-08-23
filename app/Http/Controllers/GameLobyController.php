@@ -21,8 +21,34 @@ class GameLobyController extends Controller
 // where('критерий', 'тип сравнения(<,>,= и т. д.)', 'значение')
 // latest сортирует в хронологическом порядке
 
-    public function index() {
-        return view("main" , ['posts' => Post::orderBy('title')->paginate(2)]);
+    public function index(Request $request) {
+
+
+
+        $posts = Post::orderBy('title')->paginate(8);
+
+        if($request->ajax()){
+            $query = Post::query();
+
+            $data = $request;
+
+            if(isset($data['categori_id'])){
+                $query->where('categori_id', $data['categori_id']);
+            }
+            if(isset($data['price_start'])){
+                $query->where('price', '>=', $data['price_start']);
+            }
+            if(isset($data['price_end'])){
+                $query->where('price', '<=', $data['price_end']);
+            }
+            if(isset($data['title'])){
+                $query->where('title', 'like', "%{$data['title']}%");
+            }
+
+            $posts = $query->get();
+            return $posts;
+        }
+        return view("main" , compact('posts'));
     }
 
     // Post тип данных (здесь это одна запись из бд)

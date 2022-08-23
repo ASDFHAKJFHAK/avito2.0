@@ -18,14 +18,15 @@ return new class extends Migration
 
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 40)->nullable();
-            $table->string('content', 100);
+            $table->string('title', 60)->nullable();
+            $table->string('content', 250);
+            $table->unsignedSmallInteger('categori_id')->default(0);
+            $table->float('price')->nullable();
             $table->string('img0');
             $table->string('img1')->nullable(true);
             $table->string('img2')->nullable(true);
             $table->string('img3')->nullable(true);
             $table->string('img4')->nullable(true);
-            $table->float('price')->nullable();
             // создание зависимого от другой таблицы поля где первое слово название таблицы а второе критерий связи последний метод для удаления записи при смерти ее родителя
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();

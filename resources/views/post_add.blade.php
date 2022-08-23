@@ -5,33 +5,33 @@
 <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
    @csrf
    <center>
-   <div class="form-group">
-       <label for="txtTitle" class="mt-3 mb-1">Товар</label>
-       <input name="title" id="txtTitle" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}">
-       @error('title')
-       <span class="invalid-feedback">
-        <strong>{{ $message }}</strong>
+      <div class="form-group">
+        <label for="txtTitle" class="mt-3 mb-1">Товар</label>
+        <input name="title" id="txtTitle" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}">
+        @error('title')
+        <span class="invalid-feedback">
+          <strong>{{ $message }}</strong>
+       </span>
+       @enderror
+    </div>
+    <div class="form-group">
+     <label for="txtContent" class=" mt-3 mb-1" >Описание</label>
+     <textarea name="content" id="txtContent" class="form-control @error('content') is-invalid @enderror" row="3" style="width:315px; max-width:80vw; height:150px">{{ old('content') }}</textarea>
+     @error('content')
+     <span class="invalid-feedback">
+       <strong>{{ $message }}</strong>
     </span>
     @enderror
-</div>
-<div class="form-group">
-    <label for="txtContent" class=" mt-3 mb-1" >Описание</label>
-    <textarea name="content" id="txtContent" class="form-control @error('content') is-invalid @enderror" row="3" style="width:315px; max-width:80vw; height:150px">{{ old('content') }}</textarea>
-    @error('content')
-    <span class="invalid-feedback">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
+ </div>
 
-<div class="form-group">
+ <div class="form-group">
    <label for="txtImg" class=" mt-3 mb-1">Изображение (1 из 5)</label>
    <input type="file" name="img0" id="txtImg" class="form-control @error('img0') is-invalid @enderror" value="{{ old('img0') }}">
    @error('img0')
    <span class="invalid-feedback">
-    <strong>{{ $message }}</strong>
-</span>
-@enderror
+     <strong>{{ $message }}</strong>
+  </span>
+  @enderror
 </div>
 
 @php $score = 1; $num =1; @endphp
@@ -48,9 +48,16 @@
    <input name="price" id="txtPrice" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
    @error('price')
    <span class="invalid-feedback">
-    <strong>{{ $message }}</strong>
-</span>
-@enderror
+     <strong>{{ $message }}</strong>
+  </span>
+  @enderror
+
+  <select name="categori_id" class="form-select form-select-lg mb-3 mt-3" style="max-width: 320px" aria-label=".form-select-lg пример">
+    <option selected value="0">Категория товара:</option>
+    <option value="1">Шкафы</option>
+    <option value="2">Столы</option>
+    <option value="3">Тумбочки</option>
+ </select>
 </div>
 <input type="submit" style="background-color: rgba(30, 231, 13, 1.0); border-style: none; color: black;" class="btn btn-primary mt-2 mb-5" value="Добавить">
 </form>

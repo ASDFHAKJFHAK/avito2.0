@@ -15,7 +15,7 @@ class HomeController extends Controller
     ];
     private const POST_VALIDATOR_Of_IMG = [
         'title' => 'required|max:40', //Задает ограничение для написанных столбцов в массиве
-        'content' => 'required|max:100',
+        'content' => 'required|max:250',
         'price' => 'required|numeric'
     ];
      private const POST_ERROR_MESSAGES = [

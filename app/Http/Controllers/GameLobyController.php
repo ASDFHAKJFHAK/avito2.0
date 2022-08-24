@@ -30,9 +30,9 @@ class GameLobyController extends Controller
         if($request->ajax()){
             $query = Post::query();
 
-            $data = $request;
+            $data = $request->data;
 
-            if(isset($data['categori_id'])){
+            if($data['categori_id'] !== "0"){
                 $query->where('categori_id', $data['categori_id']);
             }
             if(isset($data['price_start'])){
@@ -45,8 +45,8 @@ class GameLobyController extends Controller
                 $query->where('title', 'like', "%{$data['title']}%");
             }
 
-            $posts = $query->get();
-            return $posts;
+            $posts = $query->paginate(10);
+            return view('ajax.sort', ['posts' => $posts])->render();
         }
         return view("main" , compact('posts'));
     }

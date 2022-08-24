@@ -26,7 +26,7 @@ $(function(){
 	$('#p5').hide();
 	$('#btn0').click(function(event){
 		event.preventDefault();
-		$('#img0').css({'display' : 'none'});
+		$('#img0').css({'display' : 'none'}).attr('src', '0');
 		$('#txtImg0').css({'display' : 'block'});
 		$('#btn0').css({'display' : 'none'});
 		$('#cek0')[0].value = 1;
@@ -85,8 +85,10 @@ $(function(){
 	})
 
 	$('body > center > form > input.btn.btn-primary.mt-3.mb-5').click(function(event){
-		if($('#txtImg0')[0].value == 0){
+		if($('#txtImg0')[0].value == "" && $('#img0').attr('src') == "0"){
 			event.preventDefault();
+			console.dir($('#txtImg0')[0].value);
+			console.dir($('#img0').attr('src'));
 			$('#p5').show(1000);
 		}
 	})
